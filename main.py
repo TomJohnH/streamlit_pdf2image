@@ -9,7 +9,7 @@ image_down = []
 if button and pdf_uploaded is not None:
 
     if pdf_uploaded.type == "application/pdf":
-        images = pdf2image.convert_from_bytes(pdf_uploaded.read(), poppler_path="poppler/library/bin")
+        images = pdf2image.convert_from_bytes(pdf_uploaded.read())
         for i, page in enumerate(images):
             st.image(page, use_column_width=True)
             st.download_button("Download", data=page, file_name=f"Image_{i}.png")
