@@ -16,5 +16,5 @@ if button and pdf_uploaded is not None:
             st.write(i)
             st.write(page)
             st.image(page, use_column_width=True)
-            # st.download_button("Download", data=page, file_name=f"Image_{i}.png")
+            st.download_button("Download", data=page, file_name=f"Image_{i}.png")
             # image_down.append(page)
