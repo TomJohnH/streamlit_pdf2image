@@ -2,6 +2,12 @@ import streamlit as st
 import pdf2image
 import zipfile
 import os
+from io import BytesIO
+
+# https://discuss.streamlit.io/t/how-to-download-image/3358/10
+buf = BytesIO()
+byte_im = buf.getvalue()
+
 
 pdf_uploaded = st.file_uploader("Select a file", type="pdf")
 button = st.button("Confirm")
@@ -17,7 +23,5 @@ if button and pdf_uploaded is not None:
             st.write(page)
             st.image(page, use_column_width=True)
             image_to_download = st.image(page, use_column_width=True)
-            st.download_button(
-                "Download", data=image_to_download, file_name=f"Image_{i}.png"
-            )
+            st.download_button("Download", data=byte_im, file_name=f"Image_{i}.png")
             # image_down.append(page)
