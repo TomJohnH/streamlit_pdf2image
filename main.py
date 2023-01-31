@@ -5,8 +5,6 @@ import os
 from io import BytesIO
 
 # https://discuss.streamlit.io/t/how-to-download-image/3358/10
-buf = BytesIO()
-byte_im = buf.getvalue()
 
 
 pdf_uploaded = st.file_uploader("Select a file", type="pdf")
@@ -22,5 +20,9 @@ if button and pdf_uploaded is not None:
             st.write(i)
             st.write(page)
             st.image(page, use_column_width=True)
+            img = page
+            buf = BytesIO()
+            img.save(buf, format="JPEG")
+            byte_im = buf.getvalue()
             st.download_button("Download", data=byte_im, file_name=f"Image_{i}.png")
             # image_down.append(page)
