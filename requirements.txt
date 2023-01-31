@@ -1,2 +1,2 @@
 pdf2image==1.16.2
-poppler==0.3.0
+python-poppler
